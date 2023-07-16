@@ -6,6 +6,7 @@ import com.example.demo.services.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -27,5 +28,10 @@ public class UserLoginServiceImpl implements UserLoginService {
     @Override
     public UserLogin queryByName(String userName) {
         return userLoginMapper.queryUser(userName);
+    }
+
+    @Override
+    public UserLogin getUserInfo(HashMap<String, Object> queryMap) {
+        return userLoginMapper.selectUser(queryMap);
     }
 }

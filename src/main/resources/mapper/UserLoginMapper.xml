@@ -15,4 +15,7 @@
         select * from userLogin where username = #{username}
     </select>
 
+    <select id="selectUser" resultType="com.example.demo.pojo.UserLogin">
+        select * from userLogin where username = #{username} and password = #{password}
+    </select>
 </mapper>
