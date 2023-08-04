@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.yyds.crm;
 
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 
 @SpringBootTest
 @MapperScan(basePackages = {"com.example.demo.mapper"})
-class DemoApplicationTests {
+class CrmApplicationTests {
     @Test
     void contextLoads() {
     }

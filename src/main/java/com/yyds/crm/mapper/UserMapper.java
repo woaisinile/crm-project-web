@@ -1,15 +1,16 @@
-package com.example.demo.mapper;
+package com.yyds.crm.mapper;
 
-import com.example.demo.pojo.User;
+import com.yyds.crm.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Mapper
 @Repository
 public interface UserMapper {
-    public List<User> selectUserList();
+    public List selectAllUser();
 
-    public User selectByName(String name);
+    User selectUser(HashMap<String, Object> qryMap);
 }

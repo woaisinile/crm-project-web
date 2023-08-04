@@ -1,4 +1,4 @@
-package com.example.demo.common.result;
+package com.yyds.crm.common.result;
 
 import lombok.Getter;
 

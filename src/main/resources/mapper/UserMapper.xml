@@ -2,13 +2,14 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.mapper.UserMapper">
-    <select id="selectUserList" resultType="com.example.demo.pojo.UserLogin">
-        select * from userLogin;
+<mapper namespace="com.yyds.crm.mapper.UserMapper">
+
+    <select id="selectAllUser" resultType="com.yyds.crm.pojo.User">
+        SELECT * FROM tbl_user WHERE lock_state  = '1'
     </select>
 
-    <select id="selectByName" resultType="com.example.demo.pojo.User">
-        select * from t_user where username = #{username}
+    <select id="selectUser" resultType="com.yyds.crm.pojo.User">
+        SELECT * FROM tbl_user WHERE login_act=#{loginAct} and login_pwd=#{loginPwd}
     </select>
 
 </mapper>
