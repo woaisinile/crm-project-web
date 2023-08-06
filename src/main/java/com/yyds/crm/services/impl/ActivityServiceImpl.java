@@ -2,7 +2,6 @@ package com.yyds.crm.services.impl;
 
 import com.yyds.crm.mapper.ActivityMapper;
 import com.yyds.crm.services.ActivityService;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
