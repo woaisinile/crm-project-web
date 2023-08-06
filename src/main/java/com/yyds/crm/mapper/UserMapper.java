@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 @Repository
 public interface UserMapper {
-    public List selectAllUser();
+    List selectAllUser();
 
     User selectUser(HashMap<String, Object> qryMap);
 }
