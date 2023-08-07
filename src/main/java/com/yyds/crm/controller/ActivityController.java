@@ -19,4 +19,10 @@ public class ActivityController {
         Integer count = activityService.insertActivity(insertInfo);
         return Result.ok(count);
     }
+
+    @PostMapping("/qryActivityPage")
+    public Result qryActivityPage(@RequestBody Map<String, Object> qryMap){
+        Map<String, Object> retMap = activityService.qryActivityPage(qryMap);
+        return Result.ok(retMap);
+    }
 }

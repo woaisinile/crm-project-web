@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 
 @Service
@@ -28,4 +26,19 @@ public class ActivityServiceImpl implements ActivityService {
         insertInfo.put("createTime", createTime);
         return activityMapper.insertActivity(insertInfo);
     }
+
+    @Override
+    public Map qryActivityPage(Map<String, Object> qyrMap) {
+        Integer pageNo = Integer.parseInt((String) qyrMap.get("pageNo"));
+        Integer pageSize = Integer.parseInt((String) qyrMap.get("pageSize"));
+        qyrMap.put("beginNo", Integer.parseInt(String.valueOf((pageNo-1)*pageSize)));
+        qyrMap.put("pageSize", pageSize);
+        List activityPage = activityMapper.selectActivityPage(qyrMap);
+        Integer activityPageCount = activityMapper.selectActivityPageCount(qyrMap);
+        Map<String, Object> retMap = new HashMap<>();
+        retMap.put("activityPage", activityPage);
+        retMap.put("activityPageCount", activityPageCount);
+        return retMap;
+    }
+
 }
