@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface UserService {
-    public List queryAllUser();
+    List queryAllUser();
 
     User qryUser(HashMap<String, Object> qryMap);
 }

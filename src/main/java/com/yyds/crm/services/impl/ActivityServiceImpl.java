@@ -29,9 +29,10 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public Map qryActivityPage(Map<String, Object> qyrMap) {
-        Integer pageNo = Integer.parseInt((String) qyrMap.get("pageNo"));
-        Integer pageSize = Integer.parseInt((String) qyrMap.get("pageSize"));
-        qyrMap.put("beginNo", Integer.parseInt(String.valueOf((pageNo-1)*pageSize)));
+        int pageNo = (int) qyrMap.get("pageNo");
+        int pageSize = (int) qyrMap.get("pageSize");
+        int beginNo = (pageNo - 1) * pageSize;
+        qyrMap.put("beginNo", beginNo);
         qyrMap.put("pageSize", pageSize);
         List activityPage = activityMapper.selectActivityPage(qyrMap);
         Integer activityPageCount = activityMapper.selectActivityPageCount(qyrMap);
