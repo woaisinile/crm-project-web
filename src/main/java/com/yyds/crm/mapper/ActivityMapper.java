@@ -15,4 +15,6 @@ public interface ActivityMapper {
     List selectActivityPage(Map<String, Object> qryMap);
 
     Integer selectActivityPageCount(Map<String, Object> qryMap);
+
+    Integer updateActivity(Map<String, Object> updateInfo);
 }

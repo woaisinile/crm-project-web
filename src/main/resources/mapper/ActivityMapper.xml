@@ -14,6 +14,7 @@
         <result column="create_by" property="createBy"/>
         <result column="edit_time" property="editTime"/>
         <result column="edit_by" property="editBy"/>
+        <result column="owner_id" property="ownerId"/>
     </resultMap>
 
     <insert id="insertActivity">
@@ -25,10 +26,19 @@
                 #{createTime}, #{createBy})
     </insert>
 
+    <update id="updateActivity">
+        update tbl_activity
+        set name=#{name}, start_date=#{startDate},
+            end_date=#{endDate}, cost= #{cost},
+            description=#{description}
+        where id = #{id}
+    </update>
+
     <select id="selectActivityPage" resultMap="activity">
         select
             a.id,
             u1.name as owner,
+            u1.id as owner_id,
             a.name,
             a.start_date,
             a.end_date,

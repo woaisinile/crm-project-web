@@ -42,4 +42,10 @@ public class ActivityServiceImpl implements ActivityService {
         return retMap;
     }
 
+    @Override
+    public Integer updateActivity(Map<String, Object> updateInfo) {
+        Integer count = activityMapper.updateActivity(updateInfo);
+        return count;
+    }
+
 }

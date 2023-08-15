@@ -8,4 +8,5 @@ public interface ActivityService {
 
     Map qryActivityPage(Map<String, Object> qyrMap);
 
+    Integer updateActivity(Map<String, Object> updateInfo);
 }

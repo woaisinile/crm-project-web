@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class Activity {
     private String id;
     private String owner;
+    private String ownerId;
     private String name;
     private String startDate;
     private String endDate;
