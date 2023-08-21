@@ -2,6 +2,7 @@ package com.yyds.crm.controller;
 
 import com.yyds.crm.common.result.Result;
 import com.yyds.crm.services.ActivityService;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,12 @@ public class ActivityController {
     @PostMapping("/updateActivity")
     public Result updateActivity(@RequestBody Map<String, Object> updateInfo){
         Integer count = activityService.updateActivity(updateInfo);
+        return Result.ok(count);
+    }
+
+    @PostMapping("deleteActivity")
+    public Result deleteActivity(@RequestBody Map<String, Object> qryMap){
+        Integer count = activityService.deleteActivity(qryMap);
         return Result.ok(count);
     }
 }

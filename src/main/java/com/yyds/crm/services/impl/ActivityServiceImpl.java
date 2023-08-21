@@ -2,6 +2,7 @@ package com.yyds.crm.services.impl;
 
 import com.yyds.crm.mapper.ActivityMapper;
 import com.yyds.crm.services.ActivityService;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +47,12 @@ public class ActivityServiceImpl implements ActivityService {
     public Integer updateActivity(Map<String, Object> updateInfo) {
         Integer count = activityMapper.updateActivity(updateInfo);
         return count;
+    }
+
+    @Override
+    public Integer deleteActivity(Map<String, Object> qryMap) {
+        Integer count = activityMapper.deleteActivity(qryMap);
+        return null;
     }
 
 }
