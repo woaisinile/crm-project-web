@@ -91,4 +91,12 @@
             </if>
         </where>
     </select>
+
+    <insert id="importActivities" parameterType="java.util.List">
+        insert into tbl_activity (id, owner, name, description)
+        values
+            <foreach collection="list" item="activity" separator=",">
+                (#{activity.id}, #{activity.owner}, #{activity.name}, #{activity.description})
+            </foreach>
+    </insert>
 </mapper>

@@ -1,5 +1,7 @@
 package com.yyds.crm.services;
 
+import com.yyds.crm.pojo.Activity;
+
 import java.util.List;
 import java.util.Map;
 
@@ -11,4 +13,6 @@ public interface ActivityService {
     Integer updateActivity(Map<String, Object> updateInfo);
 
     Integer deleteActivity(Map<String, Object> qryMap);
+
+    Integer importActivities(List<Activity> activities);
 }

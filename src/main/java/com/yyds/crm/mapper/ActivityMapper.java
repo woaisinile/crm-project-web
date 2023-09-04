@@ -1,6 +1,7 @@
 package com.yyds.crm.mapper;
 
 
+import com.yyds.crm.pojo.Activity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +20,6 @@ public interface ActivityMapper {
     Integer updateActivity(Map<String, Object> updateInfo);
 
     Integer deleteActivity(Map<String, Object> qryMap);
+
+    Integer importActivities(List<Activity> activities);
 }

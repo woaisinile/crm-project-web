@@ -1,11 +1,15 @@
 package com.yyds.crm.controller;
 
+import com.yyds.crm.common.excel.ExcelUtils;
 import com.yyds.crm.common.result.Result;
+import com.yyds.crm.pojo.Activity;
 import com.yyds.crm.services.ActivityService;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -33,9 +37,22 @@ public class ActivityController {
         return Result.ok(count);
     }
 
-    @PostMapping("deleteActivity")
+    @PostMapping("/deleteActivity")
     public Result deleteActivity(@RequestBody Map<String, Object> qryMap){
         Integer count = activityService.deleteActivity(qryMap);
         return Result.ok(count);
+    }
+    @PostMapping("/importActivity")
+    public Result importActivity(@RequestPart("file") MultipartFile file){
+        try {
+            List<Activity> activities = ExcelUtils.readMultipartFile(file, Activity.class);
+//            for (Activity activity: activities){
+//                System.out.println(activity.toString());
+//            }
+            Integer importCount = activityService.importActivities(activities);
+            return Result.ok(importCount);
+        } catch (Exception e) {
+            return Result.fail("导入失败");
+        }
     }
 }
