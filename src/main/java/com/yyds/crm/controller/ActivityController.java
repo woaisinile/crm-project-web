@@ -46,9 +46,6 @@ public class ActivityController {
     public Result importActivity(@RequestPart("file") MultipartFile file){
         try {
             List<Activity> activities = ExcelUtils.readMultipartFile(file, Activity.class);
-//            for (Activity activity: activities){
-//                System.out.println(activity.toString());
-//            }
             Integer importCount = activityService.importActivities(activities);
             return Result.ok(importCount);
         } catch (Exception e) {
