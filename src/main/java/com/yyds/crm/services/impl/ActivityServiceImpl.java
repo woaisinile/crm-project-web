@@ -65,4 +65,9 @@ public class ActivityServiceImpl implements ActivityService {
         return activityMapper.importActivities(activities);
     }
 
+    @Override
+    public List<Activity> qryAllActivities() {
+        return activityMapper.selectAllActivities();
+    }
+
 }

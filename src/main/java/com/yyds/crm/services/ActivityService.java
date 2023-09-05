@@ -15,4 +15,6 @@ public interface ActivityService {
     Integer deleteActivity(Map<String, Object> qryMap);
 
     Integer importActivities(List<Activity> activities);
+
+    List<Activity> qryAllActivities();
 }

@@ -4,11 +4,13 @@ import com.yyds.crm.common.excel.ExcelUtils;
 import com.yyds.crm.common.result.Result;
 import com.yyds.crm.pojo.Activity;
 import com.yyds.crm.services.ActivityService;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -51,5 +53,22 @@ public class ActivityController {
         } catch (Exception e) {
             return Result.fail("导入失败");
         }
+    }
+
+    @GetMapping("/exportActivity")
+    public Result exportActivity(HttpServletResponse response){
+        List<Object> head = Arrays.asList("所有者", "活动名称", "活动描述");
+        List<Activity> activities = activityService.qryAllActivities();
+        List<List<Object>> sheetDataList = new ArrayList<>();
+        sheetDataList.add(head);
+        for (Activity activity: activities){
+            List<Object> activityData = new ArrayList<>();
+            activityData.add(activity.getOwner());
+            activityData.add(activity.getName());
+            activityData.add(activity.getDescription());
+            sheetDataList.add((List<Object>) activityData);
+        }
+        ExcelUtils.export(response, "市场活动", sheetDataList);
+        return Result.ok("导出成功");
     }
 }

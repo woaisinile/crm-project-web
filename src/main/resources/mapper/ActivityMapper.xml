@@ -99,4 +99,8 @@
                 (#{activity.id}, #{activity.owner}, #{activity.name}, #{activity.description})
             </foreach>
     </insert>
+
+    <select id="selectAllActivities" resultMap="activity">
+        select * from tbl_activity
+    </select>
 </mapper>
